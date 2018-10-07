@@ -1,12 +1,12 @@
-'use strict';
 
-var animals = ["COW", "PIG", "CAT", "DOG", "FROG", "LOON", "TIGER", "WOLF"];
+
+var animals = ["COW", "PIG", "CAT", "DOG", "FROG"];
 var maxGuesses = 10;
 var guessedLetters = [];
 var currentWordIndex;
 var currentWord = [];
 var remainingGuesses = 0;
-var finished = false;
+var finished = true;
 var wins = 0;
 
 function resetGame() {
@@ -16,10 +16,10 @@ function resetGame() {
     currentWord = [];
     for (var i = 0; i < animals[currentWordIndex].length; i++) {
         currentWord.push("_");
-    }
-    document.getElementById("tryAgainText").style.cssText="display: none";
-    document.getElementById("wonText").style.cssText="display: none";
-    document.getElementById("gameOverText").style.cssText="display: none";
+    };
+    document.getElementById("tryAgainText").style.cssText = "display: none";
+    document.getElementById("wonText").style.cssText = "display: none";
+    document.getElementById("gameOverText").style.cssText = "display: none";
     updateDisplay();
 };
 
@@ -36,7 +36,7 @@ function updateDisplay() {
 
 function evaluateGuess(letter) {
     var positions = [];
-    for (var i = 0 < animals[currentWordIndex].length; i++) {
+    for (var i = 0; i < animals[currentWordIndex].length; i++) {
         if(animals[currentWordIndex][i] === letter) {
             positions.push(i);
         }
@@ -60,14 +60,14 @@ function checkWin() {
 };
 
 function checkLoss() {
-    if(remainingGuesses < = 0) {
+    if(remainingGuesses <= 0) {
         document.getElementById("gameOverText").style.cssText = "display: block";
         document.getElementById("tryAgainText").style.cssText = "display: block";
         finished = true;
     }
 }
 
-fuction makeGuess(letter) {
+function makeGuess(letter) {
     if (remainingGuesses > 0) {
         if (guessedLetters.indexOf(letter) === -1) {
             guessedLetters.push(letter);
